@@ -16,14 +16,8 @@ export enum TrafficLight {
 
 export function getTrafficLightStatus(light: TrafficLight): string {
   // 在此實現函式
-  switch(light) {
-    case TrafficLight.Red:
-      return `The traffic light is ${light}`
-    case TrafficLight.Yellow:
-      return `The traffic light is ${light}`
-    case TrafficLight.Green:
-      return `The traffic light is ${light}`
-    default:
-      return `The traffic light is error`
+  if(!(light in TrafficLight)) {
+    return `The traffic light is error`
   }
+  return `The traffic light is ${light}`
 }
