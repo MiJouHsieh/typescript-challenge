@@ -6,4 +6,12 @@
  */
 export function uniqueElements(array: number[]): number[] {
     // 請在此處寫下你的程式碼
+    let uni = []
+    for (const item of array) {
+        // if item 在 uni中 return
+        if(!(uni.includes(item))) {
+            uni.push(item)
+        }
+    }
+    return uni
 }
