@@ -7,11 +7,11 @@
  * BookCategory.Poetry 代表詩歌類別
  * BookCategory.Biography 代表傳記類別
  */
-export enum BookCategory {
-    Novel = 'Novel',
-    Science = 'Science',
-    Education = 'Education'
-}
+// export enum BookCategory {
+//     Novel = 'Novel',
+//     Science = 'Science',
+//     Education = 'Education'
+// }
 
 /**
  * 這個函式的目的是根據輸入的書籍類別返回對應的描述。
@@ -22,7 +22,15 @@ export enum BookCategory {
  * 輸入: BookCategory.Novel
  * 輸出: 'Book category: Novel'
  */
-
-export function getBookCategory(category) {
+export enum BookCategory {
+    Novel = 'Novel',
+    Poetry = 'Poetry',
+    Biography = 'Biography'
+}
+export function getBookCategory(category: BookCategory): string {
   // 在此實現函式
+  if (!(category in BookCategory)) {
+    return `Sorry, we do not have ${category}`
+  }
+  return `Book category: ${category}`
 }
