@@ -7,3 +7,17 @@
 
 // 請在下方寫下你的程式碼
 
+export async function fetchData(url: string) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+    throw error;
+  }
+}
