@@ -8,27 +8,13 @@
 // 請在下方寫下你的程式碼
 
 export async function fetchData(url: string) {
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+  return new Promise(async(resolve, reject) => {
+    try {
+      const res = await fetch(url, {});
+      resolve(res.json())
+    } catch (error) {
+      reject(error)
     }
-
-    const data = await response.json();
-
-    // 確保 data 包含 id 和 title 屬性
-    if ('id' in data && 'title' in data) {
-      return {
-        id: data.id,
-        title: data.title
-      };
-    } else {
-      throw new Error('Invalid data format');
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error.message);
-    throw error;
-  }
+  })
 }
 
