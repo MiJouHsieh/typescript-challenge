@@ -17,10 +17,9 @@ interface IData {
     name: string,
     age: number
 }
-export function filterByProperty<T, K extends keyof T>(array: T[], property: K, value: T[K]): T[] {
+export function filterByProperty<T extends IData, K extends keyof T>(array: T[], property: K, value: T[K]): T[] {
     // 請在此處寫下你的程式碼
-    array.filter((item) => )
-
+    return array.filter((item) => item[property] === value) 
 }
 
 
