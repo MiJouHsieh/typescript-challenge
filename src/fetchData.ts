@@ -15,9 +15,20 @@ export async function fetchData(url: string) {
       throw new Error('Network response was not ok');
     }
 
-    return response.json();
+    const data = await response.json();
+
+    // 確保 data 包含 id 和 title 屬性
+    if ('id' in data && 'title' in data) {
+      return {
+        id: data.id,
+        title: data.title
+      };
+    } else {
+      throw new Error('Invalid data format');
+    }
   } catch (error) {
     console.error('Error fetching data:', error.message);
     throw error;
   }
 }
+
